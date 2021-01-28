@@ -1,0 +1,58 @@
+<blockquote class="blockquote ml-5">
+    <h2>Career Informations</h2>
+    <footer class="blockquote-footer">
+         Inline table editing with <i>Angular</i> and <i>Asp.Net Core</i>
+    </footer>
+</blockquote>
+
+<div class="grid-table">
+    <div class="thead">
+        <div class="tr">
+            <div class="td">CandidateID</div>
+            <div class="td">CompamnyName</div>
+            <div class="td">CompanyBusiness</div>
+            <div class="td">Designation</div>
+            <div class="td">Department</div>
+            <div class="td">StartDate</div>
+            <div class="td">EndDate</div>
+            <div class="td">
+                <button class="btn btn-outline-success" (click)="addCareerinformationsForms()">
+                    <i class="fa fa-plus"></i>CareerInfo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="tbody">
+        <form class="tr" [formGroup]="fg" *ngFor="let fg of careerinformationForms.controls" (submit)="recordSubmit(fg)">
+            <div class="td">
+                <input type="number" class="form-control" formControlName="CandidateID">
+            </div>
+            <div class="td">
+                <input class="form-control" formControlName="CompamnyName">
+            </div>
+            <div class="td">
+                <input class="form-control" formControlName="CompanyBusiness">
+            </div>
+            <div class="td">
+                <input class="form-control" formControlName="Designation">
+            </div>
+            <div class="td">
+                <input class="form-control" formControlName="Department">
+            </div>
+            <div class="td">
+                <input type="datetime-local" class="form-control" formControlName="StartDate">
+            </div>
+            <div class="td">
+                <input type="datetime-local" class="form-control" formControlName="EndDate">          
+            </div>
+            
+            <div class="td">
+                <button type="submit" class="btn btn-success"
+                [disabled]="fg.invalid"><i class="far fa-save fa-lg"></i>
+                {{fg.get('ID').value==0?'Submit':'Update'}}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
